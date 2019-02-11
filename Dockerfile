@@ -1,4 +1,7 @@
 FROM prom/prometheus
 
-RUN chgrp -R 0 /prometheus && \
-    chmod -R g=u /prometheus
+USER    root
+RUN     chgrp -R 0 /prometheus && \
+        chmod -R g=u /prometheus
+USER    nobody
+WORKDIR /prometheus
